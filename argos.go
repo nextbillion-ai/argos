@@ -9,6 +9,7 @@ import (
 	"github.com/nextbillion-ai/argos/common"
 )
 
+// ValidateMode validates the mode, which should be either "car" or "truck"
 func ValidateMode(mode *string) error {
 	if mode == nil || *mode == "" {
 		return nil
@@ -19,6 +20,7 @@ func ValidateMode(mode *string) error {
 	return errors.New("invalid mode")
 }
 
+// ValidateHazmatType validates the hazmat type, hazmatType is a string that may contain multiple hazmat types separated by "|", isFlexible indicates whether the request is flexible
 func ValidateHazmatType(hazmatType *string, isFlexible bool) error {
 	if hazmatType == nil || *hazmatType == "" {
 		return nil
@@ -39,6 +41,7 @@ func ValidateHazmatType(hazmatType *string, isFlexible bool) error {
 	return nil
 }
 
+// ValidateTruckWeight validates the truck weight, truckWeight is the weight of the truck in kg, isFlexible indicates whether the request is flexible
 func ValidateTruckWeight(truckWeight *uint, isFlexible bool) error {
 	if truckWeight == nil {
 		return nil
@@ -54,6 +57,7 @@ func ValidateTruckWeight(truckWeight *uint, isFlexible bool) error {
 	return nil
 }
 
+// ValidateTruckSize validates the truck size, truckSize is the size of the truck in meters, isFlexible indicates whether the request is flexible
 func ValidateTruckSize(truckSize *string, isFlexible bool) error {
 	if truckSize == nil || *truckSize == "" {
 		return nil
@@ -88,6 +92,7 @@ func ValidateTruckSize(truckSize *string, isFlexible bool) error {
 	return nil
 }
 
+// ValidateTruckAxleLoad validates the truck axle load, truckAxleLoad is the load of the truck axle in tons, isFlexible indicates whether the request is flexible
 func ValidateTruckAxleLoad(truckAxleLoad *float64, isFlexible bool) error {
 	if truckAxleLoad == nil {
 		return nil
@@ -101,6 +106,7 @@ func ValidateTruckAxleLoad(truckAxleLoad *float64, isFlexible bool) error {
 	return nil
 }
 
+// ValidateAvoid validates the avoid, avoid is a string that may contain multiple avoid types separated by "|", isFlexible indicates whether the request is flexible
 func ValidateAvoid(avoid *string, isFlexible bool) error {
 	if avoid == nil || *avoid == "" || *avoid == "none" {
 		return nil
@@ -149,6 +155,7 @@ func ValidateAvoid(avoid *string, isFlexible bool) error {
 	return nil
 }
 
+// ValidateApproaches validates the approaches, approaches is a string that may contain multiple approaches separated by "|", pointsNum is the number of points(waypoints + 1)
 func ValidateApproaches(approaches *string, pointsNum int) error {
 	if approaches == nil || *approaches == "" {
 		return nil
