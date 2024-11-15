@@ -1,11 +1,12 @@
 package argos
 
 import (
-	"argos/common"
 	"errors"
 	"fmt"
 	"strconv"
 	"strings"
+
+	"github.com/nextbillion-ai/argos/common"
 )
 
 func ValidateMode(mode *string) error {
