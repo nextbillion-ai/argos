@@ -2,9 +2,7 @@
 ## Argos Validation Functions
 This module contains several functions to validate navigation parameters, ensuring the parameters are valid when provided to Route Engine Service.
 
-## Function Descriptions
-
-## Function Descriptions
+## Function Descriptions For Navigation API
 
 ### 1. `ValidateMode(mode *string) error`
 
@@ -92,4 +90,4 @@ Validates the `approaches` parameter by checking if the number of points matches
 
 ## Error Handling
 
-These functions return an `error` type value. If an input is invalid or does not meet the requirements, the function returns an error containing the appropriate error message. If the input is valid, the function returns `nil`.
+These functions return an `error` type value. If an input does not meet the requirements, the function returns an error containing the appropriate error message. If the input is valid, the function returns `nil`.

@@ -1,4 +1,4 @@
-package argos
+package navigation
 
 import (
 	"errors"
