@@ -17,7 +17,7 @@ func ValidateMode(mode *string) error {
 	if *mode == "car" || *mode == "truck" {
 		return nil
 	}
-	return errors.New("invalid mode")
+	return errors.New("invalid mode, should be either 'car' or 'truck'")
 }
 
 // ValidateHazmatType validates the hazmat type, hazmatType is a string that may contain multiple hazmat types separated by "|", isFlexible indicates whether the request is flexible
@@ -67,7 +67,7 @@ func ValidateTruckSize(truckSize *string, isFlexible bool) error {
 	}
 	items := strings.Split(*truckSize, ",")
 	if len(items) != 3 {
-		return errors.New("truck size should be 3 items")
+		return errors.New("truck size should be 3 numbers separated by comma")
 	}
 	height, err := strconv.ParseFloat(strings.TrimSpace(items[0]), 64)
 	if err != nil {
@@ -98,7 +98,7 @@ func ValidateTruckAxleLoad(truckAxleLoad *float64, isFlexible bool) error {
 		return nil
 	}
 	if !isFlexible {
-		return errors.New("only flex can support truck axle load")
+		return errors.New("only flex can support truck_axle_load")
 	}
 	if *truckAxleLoad < 0 {
 		return errors.New("invalid truck_axle_load, should be greater than 0")
@@ -119,7 +119,7 @@ func ValidateAvoid(avoid *string, isFlexible bool) error {
 			case "highway", "highways", "motorway", "motorways", "toll", "tolls", "ferry", "ferries":
 				continue
 			default:
-				return errors.New("invalid avoid type: " + v)
+				return fmt.Errorf("'%s' is not a supported avoid object", v)
 			}
 		}
 	} else {
@@ -147,7 +147,7 @@ func ValidateAvoid(avoid *string, isFlexible bool) error {
 						return errors.New("invalid max_speed, should be greater than 0")
 					}
 				} else {
-					return errors.New("unsupport avoid object")
+					return fmt.Errorf("'%s' is not a supported avoid object", v)
 				}
 			}
 		}
