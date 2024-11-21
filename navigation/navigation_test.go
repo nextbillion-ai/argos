@@ -18,7 +18,7 @@ func TestValidateMode(t *testing.T) {
 		{stringPtr(""), nil},
 		{stringPtr("car"), nil},
 		{stringPtr("truck"), nil},
-		{stringPtr("bike"), errors.New("invalid mode")},
+		{stringPtr("bike"), errors.New("invalid mode, should be either 'car' or 'truck'")},
 	}
 
 	for _, test := range tests {
@@ -144,7 +144,7 @@ func TestValidateTruckAxleLoad(t *testing.T) {
 		{nil, true, nil},
 		{float64Ptr(1000), true, nil},
 		{float64Ptr(-500), true, errors.New("invalid truck_axle_load, should be greater than 0")},
-		{float64Ptr(1000), false, errors.New("only flex can support truck axle load")},
+		{float64Ptr(1000), false, errors.New("only flex can support truck_axle_load")},
 	}
 
 	for _, test := range tests {
